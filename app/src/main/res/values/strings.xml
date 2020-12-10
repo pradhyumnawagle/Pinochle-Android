@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Pinochle</string>
+    <string name="computer">Computer</string>
+    <string name="human">Human</string>
+    <string name="capture_pile">Capture Pile</string>
+    <string name="hand_pile" > Hand Pile </string>
+    <string name="meld_pile" > Meld Pile </string>
+    <string name="stock_pile" > Stock Pile </string>
+    <string name="trump_card" > Trump Card </string>
+    <string name="next_player">Next player:</string>
+    <string name="play_move">Play Move</string>
+    <string name="help">HELP</string>
+    <string name="select_card">Please select a card!!!</string>
+
+</resources>

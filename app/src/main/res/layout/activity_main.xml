@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".controller.MainActivity">
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/btn_constraint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <Button
+            android:id="@+id/computer_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/computer"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/computer_score"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="42dp"
+            android:background="@color/not_selected"
+            android:padding="3dp"/>
+
+        <TextView
+            android:id="@+id/computer_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:text="0/0"
+            android:textSize="18sp"
+            app:layout_constraintLeft_toRightOf="@id/computer_btn"
+            app:layout_constraintRight_toLeftOf="@id/human_btn"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/human_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/human"
+            app:layout_constraintLeft_toRightOf="@id/computer_score"
+            app:layout_constraintRight_toLeftOf="@id/human_score"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="251dp"
+            android:background="@color/not_selected"
+            android:padding="3dp" />
+
+        <TextView
+            android:id="@+id/human_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:text="0/0"
+            android:textSize="18sp"
+            app:layout_constraintLeft_toRightOf="@id/human_btn"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/btn_constraint"
+        android:id="@+id/player_display">
+
+        <TextView
+            android:layout_marginTop="30dp"
+            android:id="@+id/hand_pile_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/hand_pile"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="@id/player_display"
+          />
+
+        <HorizontalScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            app:layout_constraintTop_toBottomOf="@id/hand_pile_view"
+            app:layout_constraintBottom_toTopOf="@id/capture_pile_view"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:id="@+id/hand_pile_scroll_view">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/hand_pile_linear_layout"/>
+        </HorizontalScrollView>
+
+        <TextView
+            android:id="@+id/capture_pile_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/capture_pile"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/hand_pile_scroll_view"
+            app:layout_constraintBottom_toTopOf="@id/capture_pile_scroll_view"/>
+
+        <HorizontalScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            app:layout_constraintTop_toBottomOf="@id/capture_pile_view"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:id="@+id/capture_pile_scroll_view">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/capture_pile_linear_layout"/>
+        </HorizontalScrollView>
+
+        <TextView
+            android:id="@+id/meld_pile_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/meld_pile"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/capture_pile_scroll_view"
+            />
+
+        <HorizontalScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            app:layout_constraintTop_toBottomOf="@id/meld_pile_view"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:id="@+id/meld_pile_scroll_view">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/meld_pile_linear_layout"/>
+        </HorizontalScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/common_display"
+        app:layout_constraintTop_toBottomOf="@id/player_display">
+
+        <TextView
+            android:id="@+id/stock_pile_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/stock_pile"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="@id/common_display"
+            />
+
+        <HorizontalScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            app:layout_constraintTop_toBottomOf="@id/stock_pile_view"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:id="@+id/stock_pile_scroll_view">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/stock_pile_linear_layout"/>
+        </HorizontalScrollView>
+
+        <TextView
+            android:id="@+id/trump_card_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/trump_card"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/stock_pile_scroll_view"
+            />
+
+        <HorizontalScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            app:layout_constraintTop_toBottomOf="@id/trump_card_view"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:id="@+id/trump_card_scroll_view">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/trump_card_linear_layout"/>
+        </HorizontalScrollView>
+
+        <TextView
+            android:id="@+id/next_player_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/next_player"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/trump_card_scroll_view"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/next_player"
+            app:layout_constraintLeft_toRightOf="@id/next_player_view"
+            app:layout_constraintTop_toBottomOf="@id/trump_card_scroll_view"
+            android:layout_marginLeft="20dp"
+            android:text="Computer"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/round_num_view"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/trump_card_scroll_view"
+            android:layout_marginRight="30dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/round_view"
+            app:layout_constraintRight_toLeftOf="@id/round_num_view"
+            app:layout_constraintTop_toBottomOf="@id/trump_card_scroll_view"
+            android:text="Round: "
+            />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bottom_constraint"
+        app:layout_constraintTop_toBottomOf="@id/common_display"
+        android:layout_marginTop="20dp"
+        >
+
+        <Button
+            android:id="@+id/play_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="@string/play_move"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/no_meld_btn"
+            app:layout_constraintTop_toTopOf="@id/bottom_constraint"
+            />
+
+        <Button
+            android:id="@+id/help_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="@string/help"
+            app:layout_constraintLeft_toRightOf="@id/no_meld_btn"
+            app:layout_constraintTop_toTopOf="@id/bottom_constraint"
+            app:layout_constraintRight_toRightOf="parent"
+            tools:layout_editor_absoluteX="251dp"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/no_meld_btn"
+            android:text="No Meld"
+            app:layout_constraintLeft_toRightOf="@id/play_btn"
+            app:layout_constraintRight_toLeftOf="@id/help_btn"
+            android:layout_marginTop="5dp"
+            app:layout_constraintTop_toTopOf="@id/bottom_constraint"
+            android:visibility="gone"/>
+
+
+        <HorizontalScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            app:layout_constraintTop_toBottomOf="@id/play_btn"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:id="@+id/available_cards_scroll_view"
+            android:visibility="gone"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/available_cards_linear_layout"/>
+        </HorizontalScrollView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/help_text_view"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/play_btn"
+            android:visibility="gone"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/logs_btn"
+        app:layout_constraintTop_toBottomOf="@id/bottom_constraint"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/quit_btn"
+        app:layout_constraintRight_toLeftOf="@id/save_btn"
+        android:text="Logs"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/save_btn"
+        app:layout_constraintTop_toBottomOf="@id/bottom_constraint"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/logs_btn"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="Save"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/quit_btn"
+        app:layout_constraintTop_toBottomOf="@id/bottom_constraint"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/logs_btn"
+        android:text="Quit"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
